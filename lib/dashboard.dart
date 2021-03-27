@@ -3,6 +3,7 @@ import 'package:sucide_app/config.dart';
 
 class DashBoard extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryPurple,
@@ -41,7 +42,7 @@ class DashBoard extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(10)),
           boxShadow: [mainBoxShadow]
         ),
-        margin: EdgeInsets.symmetric(vertical: 15.0),
+        margin: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20),
     alignment: Alignment.center,
     child: Text("Share Thoughts",style: TextStyle(color: Colors.white,fontSize: 18),),
   )
@@ -54,7 +55,9 @@ class DashBoard extends StatelessWidget {
 }
 
 Widget containers(String title,Alignment al,double fsize) {
-  return Expanded(child:Container(
+  return  Expanded(child:GestureDetector(
+    onTap: ()=>{print("Backchod")},
+    child: Container(
         decoration:BoxDecoration(
           color: secondaryPurple,
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -66,6 +69,8 @@ Widget containers(String title,Alignment al,double fsize) {
       // decoration: BoxDecoration(), 
     alignment: al,
     child: Text(title,style: TextStyle(color: Colors.white,fontSize: fsize),),
-  ) )
+  ) ,
+  )
+  )
    ;
 }
