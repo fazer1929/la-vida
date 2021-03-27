@@ -8,6 +8,7 @@ class DashBoard extends StatelessWidget {
     return Scaffold(
       backgroundColor: primaryPurple,
      body: Container(
+       
        margin:EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,11 +29,11 @@ class DashBoard extends StatelessWidget {
             'https://source.unsplash.com/50x50/?portrait',
           )),],
           ),
-          containers("Stories", Alignment.bottomRight,24),containers("Articles", Alignment.bottomRight,24),
+          containers("Stories", Alignment.bottomRight,24,context,"stories"),containers("Articles", Alignment.bottomRight,24,context,"stories"),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              containers("See Support Groups", Alignment.center,18),containers("Create A Support Group", Alignment.center,18)
+              containers("See Support Groups", Alignment.center,18,context,"stories"),containers("Create A Support Group", Alignment.center,18,context,"stories")
             ],
           ),
            Container(
@@ -54,9 +55,9 @@ class DashBoard extends StatelessWidget {
   }
 }
 
-Widget containers(String title,Alignment al,double fsize) {
+Widget containers(String title,Alignment al,double fsize,BuildContext context,String rt) {
   return  Expanded(child:GestureDetector(
-    onTap: ()=>{print("Backchod")},
+    onTap: ()=>{ Navigator.pushNamed(context, '/'+rt)},
     child: Container(
         decoration:BoxDecoration(
           color: secondaryPurple,

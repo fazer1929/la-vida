@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './dashboard.dart';
+import './storiesAndArticles.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -7,6 +8,7 @@ void main() {
     initialRoute: "/",
     routes: {
       "/": (context) => DashBoard(),
+      "/stories":(context)=>StoriesAndArticles(),
     },
   ));
 }
