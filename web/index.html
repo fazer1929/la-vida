@@ -94,5 +94,24 @@
       loadMainDartJs();
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+  <!-- Firebase Configuration -->
+  <script>
+      var firebaseConfig = {
+    apiKey: "AIzaSyBJjvRKP-n773CaUoiTSm_8YKeMH-GcdEE",
+    authDomain: "suicide-prev-app.firebaseapp.com",
+    projectId: "suicide-prev-app",
+    storageBucket: "suicide-prev-app.appspot.com",
+    messagingSenderId: "772285381038",
+    appId: "1:772285381038:web:40ca8321b8dba80d48703f",
+    measurementId: "G-QHSDCVVCJV"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
