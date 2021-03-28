@@ -5,33 +5,21 @@ import 'package:sucide_app/Story.dart';
 import 'package:sucide_app/config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StoriesAndArticles extends StatefulWidget {
-  StoriesAndArticles({Key key}) : super(key: key);
+class Articles extends StatefulWidget {
+  Articles({Key key}) : super(key: key);
 
   @override
-  _StoriesAndArticlesState createState() => _StoriesAndArticlesState();
+  _ArticlesState createState() => _ArticlesState();
 }
 
-class _StoriesAndArticlesState extends State<StoriesAndArticles> {
+class _ArticlesState extends State<Articles> {
   @override
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<void> addStories() {
-    CollectionReference stories =
-        FirebaseFirestore.instance.collection('stories');
-    return stories.add({
-      "text": "Hello How Are You",
-      "user": FirebaseAuth.instance.currentUser
-    });
-  }
+  
 
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: ()=>{},
-        child: Icon(Icons.add,color: primaryGrey,),
-        backgroundColor:  primaryPink,
-      ),
         backgroundColor: Colors.white,
         body: Container(
             alignment: Alignment.center,
@@ -52,7 +40,7 @@ class _StoriesAndArticlesState extends State<StoriesAndArticles> {
                       child: Stack(
                         children: [
                           Text(
-                            "Stories",
+                            "Articles",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 28,
