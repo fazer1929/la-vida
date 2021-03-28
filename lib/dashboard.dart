@@ -1,59 +1,298 @@
 import 'package:flutter/material.dart';
 import 'package:sucide_app/config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sucide_app/login/login.dart';
 
-class DashBoard extends StatelessWidget {
+class DashBoard extends StatefulWidget {
   @override
+  _DashBoardState createState() => _DashBoardState();
+}
+
+class _DashBoardState extends State<DashBoard> {
+  @override
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User user;
+  bool isloggedin = false;
+
+  checkAuthentification() async {
+    _auth.authStateChanges().listen((user) {
+      if (user == null) {
+//        Navigator.of(context).pushReplacementNamed("start");
+        debugPrint("no user");
+      }
+    });
+  }
+
+  getUser() async {
+    User firebaseUser = _auth.currentUser;
+    await firebaseUser?.reload();
+    firebaseUser = _auth.currentUser;
+
+    if (firebaseUser != null) {
+      setState(() {
+        this.user = firebaseUser;
+        this.isloggedin = true;
+      });
+    }
+
+  }
+
+  signOut() async {
+    _auth.signOut();
+
+    final googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.checkAuthentification();
+    this.getUser();
+  }
+
 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryPurple,
-     body: Container(
-       
-       margin:EdgeInsets.fromLTRB(20, 20, 20, 0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [Column(
-              children: [
-                Text("Hello, Kuldeep!",style: TextStyle(fontSize:28,color: Colors.white)),
-                Text("Hope you are doing fine",style: TextStyle(fontSize:18,color: Colors.white)),
-              ],
-               
-
-            
-            ), CircleAvatar(
-          radius: 30,
-          backgroundImage: NetworkImage(
-            'https://source.unsplash.com/50x50/?portrait',
-          )),],
-          ),
-          containers("Stories", Alignment.bottomRight,24,context,"stories"),containers("Articles", Alignment.bottomRight,24,context,"stories"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              containers("See Support Groups", Alignment.center,18,context,"stories"),containers("Create A Support Group", Alignment.center,18,context,"stories")
-            ],
-          ),
-           Container(
-        height: 50,
-       decoration:BoxDecoration(
-          color: secondaryPurple,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          boxShadow: [mainBoxShadow]
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child:                 Container(
+                child: Text(
+                  "Hello ${user?.displayName} you are Logged in as ${user?.email}",
+                  style:
+                  TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Emergency'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            RaisedButton(
+              padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+              onPressed: signOut,
+              child: Text('Signout',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold)),
+              color: Colors.orange,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
         ),
-        margin: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20),
-    alignment: Alignment.center,
-    child: Text("Share Thoughts",style: TextStyle(color: Colors.white,fontSize: 18),),
-  )
-        ],
       ),
-    ), 
-    ) 
+      body: Container(
+
+        margin:EdgeInsets.fromLTRB(20, 20, 20, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Column(
+                children: [
+                  Text("Hello, Kuldeep!",style: TextStyle(fontSize:28,color: Colors.white)),
+                  Text("Hope you are doing fine",style: TextStyle(fontSize:18,color: Colors.white)),
+                ],
+
+
+
+              ), CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(
+                    'https://source.unsplash.com/50x50/?portrait',
+                  )),],
+            ),
+            containers("Stories", Alignment.bottomRight,24,context,"stories"),containers("Articles", Alignment.bottomRight,24,context,"stories"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                containers("See Support Groups", Alignment.center,18,context,"stories"),containers("Create A Support Group", Alignment.center,18,context,"stories")
+              ],
+            ),
+            Container(
+              height: 50,
+              decoration:BoxDecoration(
+                  color: secondaryPurple,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [mainBoxShadow]
+              ),
+              margin: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20),
+              alignment: Alignment.center,
+              child: Text("Share Thoughts",style: TextStyle(color: Colors.white,fontSize: 18),),
+            )
+          ],
+        ),
+      ),
+    )
     ;
   }
 }
+
+
+//class DashBoard extends StatelessWidget {
+//  @override
+//
+//  final FirebaseAuth _auth = FirebaseAuth.instance;
+//  User user;
+//  bool isloggedin = false;
+//
+//  checkAuthentification() async {
+//    _auth.authStateChanges().listen((user) {
+//      if (user == null) {
+////        Navigator.of(context).pushReplacementNamed("start");
+//      debugPrint("no user");
+//      }
+//    });
+//  }
+//
+//  getUser() async {
+//    User firebaseUser = _auth.currentUser;
+//    await firebaseUser?.reload();
+//    firebaseUser = _auth.currentUser;
+//
+////    if (firebaseUser != null) {
+////      setState(() {
+////        this.user = firebaseUser;
+////        this.isloggedin = true;
+////      });
+////    }
+//  if(firebaseUser != null){
+//    setState
+//  }
+//  }
+//
+//  signOut() async {
+//    _auth.signOut();
+//
+//    final googleSignIn = GoogleSignIn();
+//    await googleSignIn.signOut();
+//  }
+//
+//  @override
+//  void initState() {
+////    super.initState();
+//    this.checkAuthentification();
+//    this.getUser();
+//  }
+//
+//
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      backgroundColor: primaryPurple,
+//     drawer: Drawer(
+//       child: ListView(
+//         padding: EdgeInsets.zero,
+//         children: <Widget>[
+//           DrawerHeader(
+//             child:                 Container(
+//               child: Text(
+//                 "Hello ${user?.displayName} you are Logged in as ${user?.email}",
+//                 style:
+//                 TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+//               ),
+//             ),
+//             decoration: BoxDecoration(
+//               color: Colors.blue,
+//             ),
+//           ),
+//           ListTile(
+//             title: Text('Emergency'),
+//             onTap: () {
+//               // Update the state of the app.
+//               // ...
+//             },
+//           ),
+//           RaisedButton(
+//             padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+//             onPressed: signOut,
+//             child: Text('Signout',
+//                 style: TextStyle(
+//                     color: Colors.white,
+//                     fontSize: 20.0,
+//                     fontWeight: FontWeight.bold)),
+//             color: Colors.orange,
+//             shape: RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(20.0),
+//             ),
+//           ),
+//           ListTile(
+//             onTap: () {
+//               // Update the state of the app.
+//               // ...
+//             },
+//           ),
+//         ],
+//       ),
+//     ),
+//     body: Container(
+//
+//       margin:EdgeInsets.fromLTRB(20, 20, 20, 0),
+//      child: Column(
+//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//        children: [
+//          Row(
+//            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//            children: [Column(
+//              children: [
+//                Text("Hello, Kuldeep!",style: TextStyle(fontSize:28,color: Colors.white)),
+//                Text("Hope you are doing fine",style: TextStyle(fontSize:18,color: Colors.white)),
+//              ],
+//
+//
+//
+//            ), CircleAvatar(
+//          radius: 30,
+//          backgroundImage: NetworkImage(
+//            'https://source.unsplash.com/50x50/?portrait',
+//          )),],
+//          ),
+//          containers("Stories", Alignment.bottomRight,24,context,"stories"),containers("Articles", Alignment.bottomRight,24,context,"stories"),
+//          Row(
+//            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//            children: [
+//              containers("See Support Groups", Alignment.center,18,context,"stories"),containers("Create A Support Group", Alignment.center,18,context,"stories")
+//            ],
+//          ),
+//           Container(
+//        height: 50,
+//       decoration:BoxDecoration(
+//          color: secondaryPurple,
+//          borderRadius: BorderRadius.all(Radius.circular(10)),
+//          boxShadow: [mainBoxShadow]
+//        ),
+//        margin: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20),
+//    alignment: Alignment.center,
+//    child: Text("Share Thoughts",style: TextStyle(color: Colors.white,fontSize: 18),),
+//  )
+//        ],
+//      ),
+//    ),
+//    )
+//    ;
+//  }
+//}
 
 Widget containers(String title,Alignment al,double fsize,BuildContext context,String rt) {
   return  Expanded(child:GestureDetector(
