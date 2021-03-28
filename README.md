@@ -1,16 +1,47 @@
-# sucide_app
+#**Title : **
+La-vida
 
-A new Flutter project.
+#Reason of selecting project
+Happiness level in india is ranked 139 and Not only in India all over the world happiness level is decreasing. and not only this the Sucicide 
 
-## Getting Started
+#Techstack
+Language :- Dart
+Platform :- Flutter 
+Backend :- Firebase
 
-This project is a starting point for a Flutter application.
+## How to Use 
 
-A few resources to get you started if this is your first Flutter project:
+**Step 1:**
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Download or clone this repo by using the link below:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+https://github.com/fazer1929/la-vida.git
+```
+
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies: 
+
+```
+flutter pub get 
+```
+
+**Step 3:**
+
+And the last step is to run that project in android or desktop by running the app:
+
+```
+flutter run
+```
+
+#Screenshots
+
+![image](https://user-images.githubusercontent.com/39936050/112756625-b15e9700-9003-11eb-999b-53d1b7bf2dfd.png)
+
+![image](https://user-images.githubusercontent.com/39936050/112757310-e1f40000-9006-11eb-87eb-bf788e7753da.png)
+
+
+![image](https://user-images.githubusercontent.com/39936050/112756793-685b1280-9004-11eb-8193-1699f7d20b03.png)
+
+![image](https://user-images.githubusercontent.com/39936050/112757516-9f7ef300-9007-11eb-8826-6ea57004e984.png)
