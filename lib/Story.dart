@@ -78,7 +78,8 @@ class StoryView extends StatelessWidget {
                           fontSize: 22,
                           wordSpacing: 1.2,
                           color: primaryGrey,
-                          letterSpacing: 1.2
+                          letterSpacing: 1.2,
+                          height: 1.5
                         ),),
                       ),
                     ))
