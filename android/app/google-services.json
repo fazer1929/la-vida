@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "772285381038-5j2983fik6r99dp4g5q3l0dmuvaulu3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sucide_app",
+            "certificate_hash": "c3f0c400811568f55cb4c96474d6be8d7a05e7e7"
+          }
+        },
+        {
           "client_id": "772285381038-s9q11fo7k5en44l168lqcmkon2aujejc.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "772285381038-s9q11fo7k5en44l168lqcmkon2aujejc.apps.googleusercontent.com",
+              "client_id": "772285381038-csuue2mogbq9e6m8bav28mmec9mjm7p2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
