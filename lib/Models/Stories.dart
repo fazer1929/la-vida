@@ -10,4 +10,12 @@ class Story {
     this.user = user;
     this.dateCreated = DateTime.now();
   }
+
+  String getTitle() {
+    return this.title;
+  }
+  
+  String getContent() {
+    return this.content;
+  }
 }
