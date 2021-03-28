@@ -14,6 +14,7 @@ import 'ui/homepage/home_page.dart';
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: "LaVida",
     initialRoute: "/login",
     routes: {

@@ -67,18 +67,17 @@ class _DashBoardState extends State<DashBoard> {
       backgroundColor: primaryPurple,
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               child:                 Container(
                 child: Text(
-                  "Hello ${user?.displayName} you are Logged in as ${user?.email}",
+                  "${user?.email}",
                   style:
                   TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: secondaryPurple,
               ),
             ),
             ListTile(
@@ -88,19 +87,24 @@ class _DashBoardState extends State<DashBoard> {
                 // ...
               },
             ),
-            RaisedButton(
-              padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+            Container(
+              margin:EdgeInsets.symmetric(horizontal: 30),
+              child:RaisedButton(
+              
+              padding: EdgeInsets.fromLTRB(70, 20, 70, 20),
+              
               onPressed: signOut,
               child: Text('Signout',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold)),
-              color: Colors.orange,
+              color: primaryBlue,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-            ),
+            ), )
+            ,
             ListTile(
               onTap: () {
                 // Update the state of the app.

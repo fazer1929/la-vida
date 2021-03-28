@@ -116,7 +116,7 @@ class _LoginState extends State<Login> {
                       child: Column(
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                            padding: EdgeInsets.symmetric(vertical: 20,horizontal:20),
 
                             child: TextFormField(
                                 validator: (input) {
@@ -143,14 +143,15 @@ class _LoginState extends State<Login> {
                           ),
                           SizedBox(height: 20),
                           RaisedButton(
-                            padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
+                                                        padding: EdgeInsets.symmetric(vertical: 20,horizontal:40),
                             onPressed: login,
+                            
                             child: Text('LOGIN',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold)),
-                            color: Colors.orange,
+                            color: primaryBlue,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
