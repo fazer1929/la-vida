@@ -6,9 +6,21 @@ class DashBoard extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+          // Add your onPressed code here!
+        },
+        child: const Icon(Icons.arrow_right_alt_rounded),
+        backgroundColor: Colors.green,
+      ),
       backgroundColor: primaryPurple,
-     body: Container(
+     body:Container(
+       alignment: Alignment.center,
        
+       child:  Container(
+       alignment: Alignment.center,
+
+       constraints: BoxConstraints(maxWidth: 800),
        margin:EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +61,7 @@ class DashBoard extends StatelessWidget {
   )
         ],
       ),
-    ), 
+    ), )
     ) 
     ;
   }

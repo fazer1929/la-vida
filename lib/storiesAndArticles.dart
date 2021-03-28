@@ -80,6 +80,7 @@ class _StoriesAndArticlesState extends State<StoriesAndArticles> {
                                 shrinkWrap: true,
                                 children: snapshot.data.docs
                                     .map<Widget>((DocumentSnapshot document) {
+                                  print(document.reference.id);
                                   return Container(
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
@@ -97,9 +98,12 @@ class _StoriesAndArticlesState extends State<StoriesAndArticles> {
                                           onTap: () {
                                             print(document.id);
                                             Navigator.push(
-                                                context, MaterialPageRoute(
-                                                builder: (context) => StoryView(id: document.id),
-                                                ),);
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    StoryView(id: document.reference.id),
+                                              ),
+                                            );
                                           },
                                           title: Text(
                                             document.data()['title'],

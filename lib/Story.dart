@@ -8,24 +8,6 @@ import 'package:sucide_app/Models/Stories.dart';
 import 'package:sucide_app/config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class StoryView extends StatefulWidget {
-//   @override
-//   _StoryViewState createState() => _StoryViewState();
-//   StoryView({Key key, @required id}) : super(key: key);
-// }
-
-// class _StoryViewState extends State<StoryView> {
-//   Story story;
-//   @override
-//   Widget build(BuildContext context) {
-//     CollectionReference stories =
-//         FirebaseFirestore.instance.collection('stories');
-//     stories.doc("GMz4Yrr15PnH5BPCZ9sv").get().then((DocumentSnapshot docu) {
-//     });
-// return
-//   ));
-// }
-// }
 
 class StoryView extends StatelessWidget {
   final String id;
@@ -37,7 +19,7 @@ class StoryView extends StatelessWidget {
         FirebaseFirestore.instance.collection('stories');
 
     return FutureBuilder<DocumentSnapshot>(
-      future: story.doc("GMz4Yrr15PnH5BPCZ9sv").get(),
+      future: story.doc(id).get(),
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
@@ -106,7 +88,7 @@ class StoryView extends StatelessWidget {
           );
         }
 
-        return Text("loading");
+        return Scaffold(body:Text("loading"));
       },
     );
   }
