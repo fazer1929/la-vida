@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Text(
-                            "LOCAL EVENTS",
+                            "LOCAL SUPPORT GROUP/EVENTS",
                             style: fadedTextStyle,
                           ),
                           Spacer(),
@@ -43,13 +43,7 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
-                      child: Text(
-                        "What's Up",
-                        style: whiteHeadingTextStyle,
-                      ),
-                    ),
+                    
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 24.0),
                       child: Consumer<AppState>(
@@ -70,11 +64,11 @@ class HomePage extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
 //                                  debugPrint("onTap");
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => EventDetailsPage(event: event),
-                                    ),
-                                  );
+                                  // Navigator.of(context).push(
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => EventDetailsPage(event: event),
+                                  //   ),
+                                  // );
                                 },
                                 child: EventWidget(
                                   event: event,

@@ -150,10 +150,10 @@ class _DashBoardState extends State<DashBoard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  containers("See Support Groups", Alignment.center, 18,
-                      context, "stories"),
+                  containers("See Support Groups/Events", Alignment.center, 18,
+                      context, "event"),
                   containers("Create A Support Group", Alignment.center, 18,
-                      context, "stories")
+                      context, "event")
                 ],
               ),
               Container(

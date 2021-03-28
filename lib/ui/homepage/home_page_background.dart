@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sucide_app/config.dart';
 
 class HomePageBackground extends StatelessWidget {
 
@@ -10,11 +11,13 @@ class HomePageBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData  = Theme.of(context);
 
-    return ClipPath(
+  return ClipPath(
+    
       clipper: BottomShapeClipper(),
       child: Container(
         height: screenHeight * 0.5,
-        color: themeData.primaryColor,
+        color: secondaryPurple,
+      
       ),
     );
   }
